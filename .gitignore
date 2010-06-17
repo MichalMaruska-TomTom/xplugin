@@ -7,3 +7,8 @@ libtool
 ltmain.sh
 missing
 stamp-h1
+old
+debian/stamp*
+debian/*.substvars
+debian/*.log
+debian/files
