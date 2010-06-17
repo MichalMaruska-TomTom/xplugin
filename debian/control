@@ -1,0 +1,12 @@
+Source: xplugin
+Section: unknown
+Priority: extra
+Maintainer: Michal Maruska <mmaruska@gmail.com>
+Build-Depends: cdbs, debhelper (>= 5), libx11-dev, libfork
+Standards-Version: 3.7.2
+
+Package: xplugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libx11-6, libfork
+Description: Command to load the input event processing plugin in Xorg server.
+ 
