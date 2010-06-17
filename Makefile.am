@@ -31,17 +31,6 @@ xplugin_LDADD = $(XPLUGIN_LIBS)
 xplugin_SOURCES =	\
         xplugin.c
 
-appman_PRE = \
-        xplugin.man
-
-appmandir = $(APP_MAN_DIR)
-
-appman_DATA = $(appman_PRE:man=@APP_MAN_SUFFIX@)
-
-EXTRA_DIST = $(appman_PRE) 
-MAINTAINERCLEANFILES = ChangeLog INSTALL
-CLEANFILES = $(appman_DATA)
-
 .PHONY: ChangeLog INSTALL
 
 INSTALL:
