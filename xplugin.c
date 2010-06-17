@@ -1,6 +1,5 @@
 
-/* fixme: This should be  gcc -DMMC_PIPELINE  by  xmkmf/imake!  -D TOP*/
-#define MMC_PIPELINE 1
+#define MMC_PIPELINE 1 /* fixme: This should be obsoleted. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,14 +12,12 @@
 
 #include <X11/extensions/XKBstr.h>
 #include <X11/XKBlib.h>
-/* -Dxkb_plugin_dir */
+
 /* #define XKB_PLUGIN_DIR "{top-x-directory}/lib/modules/xkb-plugins/" */
 
 int
 main(int argc, char** argv)
 {
-    char* cname = (char*)0;
-    /* fixme! */
     int major=1;
     int minor=0;
     int error_rtrn;
@@ -28,19 +25,19 @@ main(int argc, char** argv)
     int reason_rtrn;
     int device = XkbUseCoreKbd;
     
-    Display* dpy;                 /* cname */
+    Display* dpy;
 
-    int res;
+    int res = False;
     int i = 1;
    
     if (argc<2){
-	printf("usage: xplugin -d {number} [-]filename\nxplugin -vl\n  where filename is in the %s\n",
+	printf("usage: xplugin -d {number} [-]filename\nxplugin -[vl]\n  where filename is in the %s\n",
 	       "XKB_PLUGIN_DIR");
 	exit(-1);
     }
-    //  init the XKB & X
+
+
     dpy = XkbOpenDisplay(getenv("DISPLAY"), &event_rtrn, &error_rtrn, &major, &minor, &reason_rtrn);
-   
     if (dpy == NULL) {
 	fprintf(stderr, "XkbOpenDisplay on %s failed: %d %s\n", getenv("DISPLAY"),
 		reason_rtrn,
@@ -55,26 +52,26 @@ main(int argc, char** argv)
     }
     
     if (0 == strcmp(argv[i],"-v"))
-	{
-	    printf("dpy: xkb version: %d.%d reason: %d\n", major, minor, reason_rtrn);
-	    i++;
-	}
+    {
+	printf("dpy: xkb version: %d.%d reason: %d\n", major, minor, reason_rtrn);
+	i++;
+    }
     else if (0 == strcmp(argv[i],"-l"))
-	{
-	    XkbPipelineListPtr p = XkbListPipeline(dpy, device);
-	    i++;
-	    if (!p)
-		exit(-1);
+    {
+	XkbPipelineListPtr p = XkbListPipeline(dpy, device);
+	int j;
+	i++;
+	if (!p)
+	    exit(-1);
 
-	    printf("%d plugin%s in the pipeline\n",
-		   p->num_plugins,
-		   (p->num_plugins==0)?"":"s");
-	    int i;
-	    for(i= 0; i < p->num_plugins; i++)
-		{                       /* flags ? */
-		    printf("%d: %s\n", p->plugins[i].id, p->plugins[i].name);
-		}
-	} else {
+	printf("%d plugin%s in the pipeline\n",
+	       p->num_plugins,
+	       (p->num_plugins==0)?"":"s");
+	for(j=0; j < p->num_plugins; j++)
+	{                       /* flags ? */
+	    printf("%d: %s\n", p->plugins[j].id, p->plugins[j].name);
+	}
+    } else {
 	if (argv[i][0] == '-') {
 	    printf ("removing %s\n", argv[i]);
 	    res = XkbSetPlugin(dpy, device, "", argv[i] +1, True); /* before */
@@ -91,10 +88,10 @@ main(int argc, char** argv)
 	    int i;
 	    for(i= 0; i < p->num_plugins; i++)
 		if (0 == strcmp(module_name, p->plugins[i].name))
-		    {
-			printf ("%s already loaded\n", module_name);
-			goto close;
-		    }
+		{
+		    printf ("%s already loaded\n", module_name);
+		    goto close;
+		}
 	    /* i might test, if in_front_of is present! */
 	    printf ("loading %s\n", module_name);
 	    res = XkbSetPlugin(dpy, device, module_name, in_front_of, True); /* before */
