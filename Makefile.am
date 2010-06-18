@@ -21,10 +21,9 @@
 
 bin_PROGRAMS = xplugin
 
-XKBCONFIGROOT=@XKBCONFIGROOT@
 
-AM_CFLAGS = $(CWARNFLAGS) $(XPLUGIN_CFLAGS) \
-	-DDFLT_XKB_CONFIG_ROOT=\"$(XKBCONFIGROOT)\"
+AM_CFLAGS = $(CWARNFLAGS) $(XPLUGIN_CFLAGS)
+
 # -DXKB_PLUGIN_DIR=\"$(MODULEDIR)/xkb-plugins\""
 xplugin_LDADD = $(XPLUGIN_LIBS)
 
@@ -48,7 +47,6 @@ XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
 MAN_SUBSTS = \
-	-e 's|__xkbconfigroot__|"$(XKBCONFIGROOT)"|' \
 	-e 's|__vendorversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
 	-e 's|__xorgversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
 	-e 's|__xservername__|Xorg|g' \

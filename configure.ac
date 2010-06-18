@@ -38,15 +38,8 @@ AC_PROG_INSTALL
 
 XORG_DEFAULT_OPTIONS
 
-AC_ARG_WITH(xkb-config-root,
-        AC_HELP_STRING([--with-xkb-config-root=<paths>],
-                       [Set default XKB config root (default: ${datadir}/X11/xkb)]),
-        [XKBCONFIGROOT="$withval"],
-        [XKBCONFIGROOT=${datadir}/X11/xkb])
-AC_SUBST([XKBCONFIGROOT])
-
 # Checks for pkg-config packages
-PKG_CHECK_MODULES(XPLUGIN, xkbfile x11)
+PKG_CHECK_MODULES(XPLUGIN, x11)
 AC_SUBST(XPLUGIN_CFLAGS)
 AC_SUBST(XPLUGIN_LIBS)
 
