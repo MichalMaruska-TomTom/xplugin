@@ -1,3 +1,21 @@
+xplugin (1.3) lucid; urgency=low
+
+  * add pkg-config as dependency
+
+ -- Michal Maruska <mmaruska@gmail.com>  Sat, 19 Jun 2010 18:54:12 +0000
+
+xplugin (1.2) lucid; urgency=low
+
+  * drop dependency on libfork
+
+ -- Michal Maruska <mmaruska@gmail.com>  Sat, 19 Jun 2010 16:35:32 +0000
+
+xplugin (1.1) lucid; urgency=low
+
+  * release to PPA
+
+ -- Michal Maruska <mmaruska@gmail.com>  Sat, 19 Jun 2010 13:40:42 +0000
+
 xplugin (1-1) unstable; urgency=low
 
   * Initial release
