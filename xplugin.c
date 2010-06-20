@@ -30,8 +30,10 @@ main(int argc, char** argv)
     int res = False;
     int i = 1;
    
-    if (argc<2){
-	printf("usage: xplugin -d {number} [-]filename\nxplugin -[vl]\n  where filename is in the %s\n",
+    if ((argc<2) || (0 == strcmp(argv[1],"-h")))
+    {
+	printf("usage: xplugin -d {number} [-]filename\nxplugin -[vl]\n"
+	       "   where filename is in the %s\n",
 	       "XKB_PLUGIN_DIR");
 	exit(-1);
     }
