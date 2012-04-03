@@ -2,11 +2,11 @@ Source: xplugin
 Section: x11
 Priority: optional
 Maintainer: Michal Maruska <mmaruska@gmail.com>
-Build-Depends: cdbs, debhelper (>= 5), libx11-dev (= 2:1.3.2-1ubuntu4mmc2), pkg-config
+Build-Depends: cdbs, debhelper (>= 5), libx11-dev (>= 2:1.3.3-3ubuntu2mmc2), pkg-config
 Standards-Version: 3.7.2
 
 Package: xplugin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libx11-6 (= 2:1.3.2-1ubuntu4mmc2)
+Depends: ${shlibs:Depends}, ${misc:Depends}, libx11-6 (>= 2:1.3.3-3ubuntu2mmc2)
 Description: Command to load the input event processing plugin in Xorg server.
  
