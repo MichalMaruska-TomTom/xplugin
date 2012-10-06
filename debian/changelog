@@ -1,9 +1,11 @@
-xplugin (1.3.2) precise; urgency=low
+xplugin (1.3.3) precise; urgency=low
 
   * fix dependency
   * add auto script
+  * Fix:  This package will soon FTBFS; time to fix it!
+  * Stop declaring  clean in debian/rules.
 
- -- Michal Maruska <mmaruska@gmail.com>  Mon, 27 Aug 2012 21:42:57 +0200
+ -- Michal Maruska <mmaruska@gmail.com>  Sun, 07 Oct 2012 00:18:49 +0200
 
 xplugin (1.3.1) maverick; urgency=low
 
