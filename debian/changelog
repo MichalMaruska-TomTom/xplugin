@@ -1,4 +1,4 @@
-xplugin (1.3.3) precise; urgency=low
+xplugin (1.3.3) precise unstable; urgency=low
 
   * fix dependency
   * add auto script
