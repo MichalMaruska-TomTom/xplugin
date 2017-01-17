@@ -14,8 +14,23 @@
 
 /* #define XKB_PLUGIN_DIR "{top-x-directory}/lib/modules/xkb-plugins/" */
 
-int
-main(int argc, char** argv)
+void dump_plugins(Display *dpy, int device)
+{
+    XkbPipelineListPtr p = XkbListPipeline(dpy, device);
+    if (!p)
+        exit(-1);
+
+    printf("%d plugin%s in the pipeline\n",
+           p->num_plugins,
+           (p->num_plugins==0)?"":"s");
+    for (int j=0; j < p->num_plugins; j++)
+    {                       /* flags ? */
+        printf("%d: %s\n", p->plugins[j].id, p->plugins[j].name);
+    }
+}
+
+
+int main(int argc, char** argv)
 {
     int major=1;
     int minor=0;
@@ -54,24 +69,12 @@ main(int argc, char** argv)
 
     if (0 == strcmp(argv[i],"-v"))
     {
-        printf("dpy: xkb version: %d.%d reason: %d\n", major, minor, reason_rtrn);
         i++;
+        printf("dpy: xkb version: %d.%d reason: %d\n", major, minor, reason_rtrn);
     }
     else if (0 == strcmp(argv[i],"-l"))
     {
-        XkbPipelineListPtr p = XkbListPipeline(dpy, device);
-        int j;
-        i++;
-        if (!p)
-            exit(-1);
-
-        printf("%d plugin%s in the pipeline\n",
-               p->num_plugins,
-               (p->num_plugins==0)?"":"s");
-        for(j=0; j < p->num_plugins; j++)
-        {                       /* flags ? */
-            printf("%d: %s\n", p->plugins[j].id, p->plugins[j].name);
-        }
+        dump_plugins(dpy, device);
     } else {
         if (argv[i][0] == '-') {
             printf ("removing %s\n", argv[i]);
