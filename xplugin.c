@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 
     if ((argc<2) || (0 == strcmp(argv[1],"-h")))
     {
-        printf("usage: xplugin -d {number} [-]filename\nxplugin -[vl]\n"
+        printf("usage: xplugin -d {number} [-]filename\n\txplugin -v\n\txplugin -l\n"
                "   where filename is in the %s\n",
                "XKB_PLUGIN_DIR");
         exit(-1);
