@@ -1,3 +1,12 @@
+xplugin (1.4) unstable; urgency=medium
+
+  * drop TABs
+  * Split off dump_plugins.
+  * Extend usage string for -l option.
+  * Drop cdbs
+
+ -- Michal Maruska <mmaruska@gmail.com>  Sat, 29 Sep 2018 20:56:43 +0200
+
 xplugin (1.3.3) precise unstable; urgency=low
 
   * fix dependency
