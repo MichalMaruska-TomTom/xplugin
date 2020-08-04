@@ -89,9 +89,8 @@ int main(int argc, char** argv)
 
             XkbPipelineListPtr p = XkbListPipeline(dpy, device);
             /* Is it already loaded? */
-            int i;
-            for(i= 0; i < p->num_plugins; i++)
-                if (0 == strcmp(module_name, p->plugins[i].name))
+            for(int j = 0; j < p->num_plugins; j++)
+                if (0 == strcmp(module_name, p->plugins[j].name))
                 {
                     printf ("%s already loaded\n", module_name);
                     goto close;
