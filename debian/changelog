@@ -1,3 +1,10 @@
+xplugin (1.5) focal; urgency=medium
+
+  * bump debian/compat
+  * avoid shadowning variables
+
+ -- Michal Maruska <mmaruska@gmail.com>  Sun, 18 Dec 2022 00:26:43 +0100
+
 xplugin (1.4) unstable; urgency=medium
 
   * drop TABs
