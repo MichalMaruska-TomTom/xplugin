@@ -1,3 +1,12 @@
+xplugin (1.5) unstable; urgency=medium
+
+  [ Michal Maruska ]
+  * bump debian/compat
+  * avoid shadowning variables
+  * add dependency on xorg-macros
+
+ --  <mmaruska@gmail.com>  Sat, 08 Jul 2023 15:07:31 +0200
+
 xplugin (1.4) unstable; urgency=medium
 
   * drop TABs
